@@ -49,8 +49,8 @@ stages:
       size: 96317
     - path: src/models/train_model.py
       hash: md5
-      md5: 9fe1cde00b2aec044619968023572c62
-      size: 3932
+      md5: e5a845b8e64ae217ef5c443870cdf95f
+      size: 7248
     params:
       params.yaml:
         random_forest.max_depth: 10
@@ -60,8 +60,8 @@ stages:
     deps:
     - path: src/models/production_model_selection.py
       hash: md5
-      md5: 20d48b5a1ad8edecfd01555a01f60100
-      size: 2795
+      md5: d118ec5adca937388bd1a02220d803e7
+      size: 3496
     params:
       params.yaml:
         random_forest.max_depth: 10
@@ -69,5 +69,5 @@ stages:
     outs:
     - path: models/model.joblib
       hash: md5
-      md5: 235f9b3a33f5f4623290d59d4fbed173
-      size: 881526
+      md5: 99507b6f65e9494e39ac6099c266787d
+      size: 781213
