@@ -60,7 +60,7 @@ stages:
     deps:
     - path: models/trained_model.joblib
       hash: md5
-      md5: d246bf83aa256e146f56008f5f6eced6
+      md5: 2747e06d4c70b686179e9cd6704587cf
       size: 4887011
     - path: src/models/production_model_selection.py
       hash: md5
@@ -69,7 +69,7 @@ stages:
     outs:
     - path: models/model.joblib
       hash: md5
-      md5: 60ba5bfa9d907128e3a329c6f89800c5
+      md5: 0463db1a1256ac212516b7936e5bc197
       size: 4888739
   clean_data:
     cmd: python src/data/clean_data.py
@@ -84,20 +84,20 @@ stages:
       size: 2531
     - path: src/data/clean_data.py
       hash: md5
-      md5: f6eb035d6b4febcc24b4ae40298b91d0
-      size: 2481
+      md5: ad5b3cfbd4329b1b807760869e0ecb0c
+      size: 2570
     outs:
     - path: data/processed/CleanedDF.csv
       hash: md5
-      md5: fc28ae1bd5809ef3090ad7f57f6c751c
-      size: 1387374
+      md5: 65ac46ca94a31a93730f3fd4b33650b0
+      size: 1402746
   train_model:
     cmd: python src/models/train_model.py
     deps:
     - path: data/processed/CleanedDF.csv
       hash: md5
-      md5: fc28ae1bd5809ef3090ad7f57f6c751c
-      size: 1387374
+      md5: 65ac46ca94a31a93730f3fd4b33650b0
+      size: 1402746
     - path: params.yaml
       hash: md5
       md5: e11af6d0b821324cf4a4f399b5585432
@@ -121,7 +121,7 @@ stages:
       size: 334
     - path: metrics/classification_report_Bagging.txt
       hash: md5
-      md5: c57786f9e18aa41a112002b47fdcf37a
+      md5: d20474f9cfbb301882d085f11077dd8a
       size: 334
     - path: metrics/classification_report_BernoulliNB.txt
       hash: md5
@@ -133,7 +133,7 @@ stages:
       size: 334
     - path: metrics/classification_report_DecisionTree.txt
       hash: md5
-      md5: 62f9c805da971cb82ea6d4b2d87aed36
+      md5: 992ec92f943facf23f232e1bd24cbceb
       size: 334
     - path: metrics/classification_report_Ensemble_XGB_AdaBoost.txt
       hash: md5
@@ -141,7 +141,7 @@ stages:
       size: 334
     - path: metrics/classification_report_Ensemble_XGB_CatBoost_Bagging.txt
       hash: md5
-      md5: 20c7e026882f008d6a592da5f1494f87
+      md5: 5b8d4f1a184dc60c3d19683f44d2a08a
       size: 334
     - path: metrics/classification_report_Ensemble_XGB_LGBM_CatBoost.txt
       hash: md5
@@ -153,7 +153,7 @@ stages:
       size: 334
     - path: metrics/classification_report_ExtraTree.txt
       hash: md5
-      md5: e76154be62778dc4176d6da8e87df22b
+      md5: cd6cc02e74879976848b705f9895cd2b
       size: 334
     - path: metrics/classification_report_KNeighbors.txt
       hash: md5
@@ -165,7 +165,7 @@ stages:
       size: 334
     - path: metrics/classification_report_RandomForest.txt
       hash: md5
-      md5: 1014a800d8e78a1f6ad80155e9afa5b8
+      md5: 49c746a7cf2d34aa270a04d9ad097cad
       size: 334
     - path: metrics/classification_report_Ridge.txt
       hash: md5
@@ -173,7 +173,7 @@ stages:
       size: 334
     - path: metrics/classification_report_SGD.txt
       hash: md5
-      md5: f6895193de3a956ea0a5eb4d15fc9a2c
+      md5: d617b1405b9c5baf4c53ded2efd705de
       size: 334
     - path: metrics/classification_report_SVC.txt
       hash: md5
@@ -189,7 +189,7 @@ stages:
       size: 27
     - path: metrics/confusion_matrix_Bagging.txt
       hash: md5
-      md5: 03ae4c1e3b4795207876505bbfa03079
+      md5: e28e88aa824477d39f6d3ba509ff96f4
       size: 27
     - path: metrics/confusion_matrix_BernoulliNB.txt
       hash: md5
@@ -201,7 +201,7 @@ stages:
       size: 27
     - path: metrics/confusion_matrix_DecisionTree.txt
       hash: md5
-      md5: 9c0f34111cd79cc2d3dd0558319aee80
+      md5: 117306302ec74f190b15a54c84335078
       size: 27
     - path: metrics/confusion_matrix_Ensemble_XGB_AdaBoost.txt
       hash: md5
@@ -209,7 +209,7 @@ stages:
       size: 27
     - path: metrics/confusion_matrix_Ensemble_XGB_CatBoost_Bagging.txt
       hash: md5
-      md5: 8cfd9e77da2c725751fd196c53479e29
+      md5: 084cbc04d36598f44201a4d468a4df61
       size: 27
     - path: metrics/confusion_matrix_Ensemble_XGB_LGBM_CatBoost.txt
       hash: md5
@@ -217,11 +217,11 @@ stages:
       size: 27
     - path: metrics/confusion_matrix_Ensemble_XGB_RF_DT.txt
       hash: md5
-      md5: 774e97caa2b594d76370b213c8a2f944
+      md5: 72058e2a6d43cebb41471d04adfba65d
       size: 27
     - path: metrics/confusion_matrix_ExtraTree.txt
       hash: md5
-      md5: 06a4f56f5a93fb70e1104f9b1014c046
+      md5: fd726e96dc1642eef1c3f2507b711f62
       size: 27
     - path: metrics/confusion_matrix_KNeighbors.txt
       hash: md5
@@ -233,7 +233,7 @@ stages:
       size: 27
     - path: metrics/confusion_matrix_RandomForest.txt
       hash: md5
-      md5: 73adefa25db18df3aa40e7ee740fa28c
+      md5: 1fec7cd3da099535b7d0d25c9b61adc2
       size: 27
     - path: metrics/confusion_matrix_Ridge.txt
       hash: md5
@@ -241,7 +241,7 @@ stages:
       size: 27
     - path: metrics/confusion_matrix_SGD.txt
       hash: md5
-      md5: 54fbc7c46a4879f234aafdb56ba35ad6
+      md5: 60f2d46125268c7c1812424a7f103aa7
       size: 27
     - path: metrics/confusion_matrix_SVC.txt
       hash: md5
@@ -253,7 +253,7 @@ stages:
       size: 27
     - path: models/trained_model.joblib
       hash: md5
-      md5: d246bf83aa256e146f56008f5f6eced6
+      md5: 2747e06d4c70b686179e9cd6704587cf
       size: 4887011
     - path: plots/confusion_matrix_AdaBoost.png
       hash: md5
@@ -261,8 +261,8 @@ stages:
       size: 21172
     - path: plots/confusion_matrix_Bagging.png
       hash: md5
-      md5: e254e8760cab59a025ed882cdd48c9ba
-      size: 21989
+      md5: 71e965d4b934845d11dcf586cdd91d78
+      size: 21379
     - path: plots/confusion_matrix_BernoulliNB.png
       hash: md5
       md5: f4e6424841122a380bb79c403290412d
@@ -273,28 +273,28 @@ stages:
       size: 21433
     - path: plots/confusion_matrix_DecisionTree.png
       hash: md5
-      md5: c23ca6c062db9a685f274df7f763c89f
-      size: 21163
+      md5: 954f2fc90b7c90b1afe49898739e179e
+      size: 21024
     - path: plots/confusion_matrix_Ensemble_XGB_AdaBoost.png
       hash: md5
       md5: ec7caf6ca574de57c4b82257b7b010a7
       size: 23866
     - path: plots/confusion_matrix_Ensemble_XGB_CatBoost_Bagging.png
       hash: md5
-      md5: 6dbc0c1459cf350887bafa892faada8c
-      size: 24537
+      md5: 95ce64788e677f6ec1be900b8f9c51b9
+      size: 24684
     - path: plots/confusion_matrix_Ensemble_XGB_LGBM_CatBoost.png
       hash: md5
       md5: c165e01b42c29b538160e912129f8c6e
       size: 24767
     - path: plots/confusion_matrix_Ensemble_XGB_RF_DT.png
       hash: md5
-      md5: c4e2527763e6e91847fb7cc83a13c0d3
-      size: 22587
+      md5: 7132068970bf26fd8c0ef0b377013ab0
+      size: 22582
     - path: plots/confusion_matrix_ExtraTree.png
       hash: md5
-      md5: e0b2ff88d09b8428731186d48846564f
-      size: 20099
+      md5: b66a683473ebb06848f8a37d4e903557
+      size: 20317
     - path: plots/confusion_matrix_KNeighbors.png
       hash: md5
       md5: aca7151d29b03d424409b886485fd430
@@ -305,16 +305,16 @@ stages:
       size: 21511
     - path: plots/confusion_matrix_RandomForest.png
       hash: md5
-      md5: 4360579120e10c8f4d3a5171eb8a9825
-      size: 21852
+      md5: 63a128b82b6821bde80b3e0ff21c5df7
+      size: 22281
     - path: plots/confusion_matrix_Ridge.png
       hash: md5
       md5: 4bd5eeadb6c65aff7a91fab1a1cc66cc
       size: 19596
     - path: plots/confusion_matrix_SGD.png
       hash: md5
-      md5: 8a779190202cbc542c4a778a6a9c2aba
-      size: 19688
+      md5: e6015934c183b76715c50f3f54c4e1f9
+      size: 19517
     - path: plots/confusion_matrix_SVC.png
       hash: md5
       md5: 5161584b22916cfd8b14b1a582152c7d
@@ -325,5 +325,5 @@ stages:
       size: 21446
     - path: webapp/model_webapp_dir/model.joblib
       hash: md5
-      md5: d246bf83aa256e146f56008f5f6eced6
+      md5: 2747e06d4c70b686179e9cd6704587cf
       size: 4887011
