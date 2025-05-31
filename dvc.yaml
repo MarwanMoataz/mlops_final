@@ -1,38 +1,134 @@
 stages:
-  raw_dataset_creation:
-    cmd: python src/data/load_data.py --config=params.yaml
+  clean_data:
+    cmd: python src/data/clean_data.py
     deps:
-    - src/data/load_data.py
-    - data/external/train.csv
+      - src/data/clean_data.py
+      - params.yaml
+      - data/external/train.csv
     outs:
-    - data/raw/train.csv
-  
-  split_data:
-    cmd: python src/data/split_data.py --config=params.yaml
-    deps:
-    - src/data/split_data.py
-    - data/raw/train.csv
-    outs:
-    - data/processed/churn_train.csv
-    - data/processed/churn_test.csv
+      - data/processed/CleanedDF.csv
 
-  model_train:
-    cmd: python src/models/train_model.py --config=params.yaml
+  train_model:
+    cmd: python src/models/train_model.py
     deps:
-    - data/processed/churn_train.csv
-    - data/processed/churn_test.csv
-    - src/models/train_model.py
-    params:
-    - random_forest.max_depth
-    - random_forest.n_estimators
+      - src/models/train_model.py
+      - params.yaml
+      - data/processed/CleanedDF.csv
+    outs:
+      - models/trained_model.joblib
+      - webapp/model_webapp_dir/model.joblib
+      - data/processed/churn_train.csv
+      - data/processed/churn_test.csv
+    metrics:
+      - metrics/confusion_matrix_XGBoost.txt:
+          cache: false
+      - metrics/confusion_matrix_LGBM.txt:
+          cache: false
+      - metrics/confusion_matrix_RandomForest.txt:
+          cache: false
+      - metrics/confusion_matrix_DecisionTree.txt:
+          cache: false
+      - metrics/confusion_matrix_ExtraTree.txt:
+          cache: false
+      - metrics/confusion_matrix_AdaBoost.txt:
+          cache: false
+      - metrics/confusion_matrix_KNeighbors.txt:
+          cache: false
+      - metrics/confusion_matrix_Ridge.txt:
+          cache: false
+      - metrics/confusion_matrix_SGD.txt:
+          cache: false
+      - metrics/confusion_matrix_Bagging.txt:
+          cache: false
+      - metrics/confusion_matrix_BernoulliNB.txt:
+          cache: false
+      - metrics/confusion_matrix_SVC.txt:
+          cache: false
+      - metrics/confusion_matrix_CatBoost.txt:
+          cache: false
+      - metrics/confusion_matrix_Ensemble_XGB_CatBoost_Bagging.txt:
+          cache: false
+      - metrics/confusion_matrix_Ensemble_XGB_LGBM_CatBoost.txt:
+          cache: false
+      - metrics/confusion_matrix_Ensemble_XGB_RF_DT.txt:
+          cache: false
+      - metrics/confusion_matrix_Ensemble_XGB_AdaBoost.txt:
+          cache: false
+      - metrics/classification_report_XGBoost.txt:
+          cache: false
+      - metrics/classification_report_LGBM.txt:
+          cache: false
+      - metrics/classification_report_RandomForest.txt:
+          cache: false
+      - metrics/classification_report_DecisionTree.txt:
+          cache: false
+      - metrics/classification_report_ExtraTree.txt:
+          cache: false
+      - metrics/classification_report_AdaBoost.txt:
+          cache: false
+      - metrics/classification_report_KNeighbors.txt:
+          cache: false
+      - metrics/classification_report_Ridge.txt:
+          cache: false
+      - metrics/classification_report_SGD.txt:
+          cache: false
+      - metrics/classification_report_Bagging.txt:
+          cache: false
+      - metrics/classification_report_BernoulliNB.txt:
+          cache: false
+      - metrics/classification_report_SVC.txt:
+          cache: false
+      - metrics/classification_report_CatBoost.txt:
+          cache: false
+      - metrics/classification_report_Ensemble_XGB_CatBoost_Bagging.txt:
+          cache: false
+      - metrics/classification_report_Ensemble_XGB_LGBM_CatBoost.txt:
+          cache: false
+      - metrics/classification_report_Ensemble_XGB_RF_DT.txt:
+          cache: false
+      - metrics/classification_report_Ensemble_XGB_AdaBoost.txt:
+          cache: false
+    plots:
+      - plots/confusion_matrix_XGBoost.png:
+          cache: false
+      - plots/confusion_matrix_LGBM.png:
+          cache: false
+      - plots/confusion_matrix_RandomForest.png:
+          cache: false
+      - plots/confusion_matrix_DecisionTree.png:
+          cache: false
+      - plots/confusion_matrix_ExtraTree.png:
+          cache: false
+      - plots/confusion_matrix_AdaBoost.png:
+          cache: false
+      - plots/confusion_matrix_KNeighbors.png:
+          cache: false
+      - plots/confusion_matrix_Ridge.png:
+          cache: false
+      - plots/confusion_matrix_SGD.png:
+          cache: false
+      - plots/confusion_matrix_Bagging.png:
+          cache: false
+      - plots/confusion_matrix_BernoulliNB.png:
+          cache: false
+      - plots/confusion_matrix_SVC.png:
+          cache: false
+      - plots/confusion_matrix_CatBoost.png:
+          cache: false
+      - plots/confusion_matrix_Ensemble_XGB_CatBoost_Bagging.png:
+          cache: false
+      - plots/confusion_matrix_Ensemble_XGB_LGBM_CatBoost.png:
+          cache: false
+      - plots/confusion_matrix_Ensemble_XGB_RF_DT.png:
+          cache: false
+      - plots/confusion_matrix_Ensemble_XGB_AdaBoost.png:
+          cache: false
 
   log_production_model:
     cmd: python src/models/production_model_selection.py --config=params.yaml
     deps:
-    - src/models/production_model_selection.py
-    params:
-    - random_forest.max_depth
-    - random_forest.n_estimators
+      - src/models/production_model_selection.py
+      - models/trained_model.joblib
     outs:
-    - models/model.joblib
+      - models/model.joblib
 

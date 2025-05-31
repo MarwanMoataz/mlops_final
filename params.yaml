@@ -3,31 +3,114 @@ external_data_config:
 
 raw_data_config: 
   raw_data_csv: data/raw/train.csv
-  model_var: ['churn','number_vmail_messages','total_day_calls','total_eve_minutes','total_eve_charge','total_intl_minutes','number_customer_service_calls']
-  train_test_split_ratio: 0.2
-  target: churn 
-  random_state: 111
-  new_train_data_csv: data/raw/train_new.csv
+  new_train_data_csv: data/raw/newdata.csv
+  train_test_split_ratio: 0.3
+  target: Churn
+  random_state: 42
+  model_var:
+    - Age
+    - NumberofDependents
+    - Population
+    - NumberofReferrals
+    - TenureinMonths
+    - AvgMonthlyLongDistanceCharges
+    - AvgMonthlyGBDownload
+    - MonthlyCharge
+    - TotalCharges
+    - TotalRefunds
+    - TotalExtraDataCharges
+    - TotalLongDistanceCharges
+    - TotalRevenue
+    - Gender
+    - Offer
+    - Married
+    - PhoneService
+    - MultipleLines
+    - InternetService
+    - InternetType
+    - OnlineSecurity
+    - OnlineBackup
+    - DeviceProtectionPlan
+    - PremiumTechSupport
+    - StreamingTV
+    - StreamingMovies
+    - StreamingMusic
+    - UnlimitedData
+    - Contract
+    - PaperlessBilling
+    - PaymentMethod
 
 processed_data_config:
   train_data_csv: data/processed/churn_train.csv
-  test_data_csv:  data/processed/churn_test.csv
+  test_data_csv: data/processed/churn_test.csv
+  cleaned_data_csv: data/processed/CleanedDF.csv
 
 mlflow_config:
   artifacts_dir: artifacts
-  experiment_name: model_iteration2
-  run_name: random_forest
-  registered_model_name: random_forest_model
+  experiment_name: churn_prediction
+  run_name: xgboost_model
+  registered_model_name: xgboost_churn_model
   remote_server_uri: http://localhost:1234
- 
-random_forest: 
-  max_depth: 10
-  n_estimators: 30
+
+data_processing:
+  numerical_features:
+    - Age
+    - NumberofDependents
+    - Population
+    - NumberofReferrals
+    - TenureinMonths
+    - AvgMonthlyLongDistanceCharges
+    - AvgMonthlyGBDownload
+    - MonthlyCharge
+    - TotalCharges
+    - TotalRefunds
+    - TotalExtraDataCharges
+    - TotalLongDistanceCharges
+    - TotalRevenue
+  categorical_features:
+    - Gender
+    - Offer
+    - Married
+    - PhoneService
+    - MultipleLines
+    - InternetService
+    - InternetType
+    - OnlineSecurity
+    - OnlineBackup
+    - DeviceProtectionPlan
+    - PremiumTechSupport
+    - StreamingTV
+    - StreamingMovies
+    - StreamingMusic
+    - UnlimitedData
+    - Contract
+    - PaperlessBilling
+    - PaymentMethod
+  columns_to_remove:
+    - CustomerID
+    - ZipCode
+    - City
+    - ChurnCategory
+    - ChurnReason
+    - Churn
+
+xgboost:
+  use_label_encoder: false
+  eval_metric: logloss
+  objective: binary:logistic
+  learning_rate: 0.1
+  n_estimators: 1000
+  max_depth: 9
+  min_child_weight: 1
+  gamma: 0.4
+  colsample_bytree: 0.8
+  subsample: 0.9
+  reg_alpha: 1
+  scale_pos_weight: 1
 
 model_dir: models/model.joblib
-
 model_webapp_dir: webapp/model_webapp_dir/model.joblib
 
 model_monitor:
-  target_col_name: target
+  target_col_name: Churn
   monitor_dashboard_html: reports/data_and_target_drift_dashboard.html
