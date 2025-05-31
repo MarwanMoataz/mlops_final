@@ -54,6 +54,9 @@ def clean_data():
     df = df[(np.abs(stats.zscore(df['TotalRevenue'])) < 3)]
     df = df[(np.abs(stats.zscore(df['Population'])) < 3)]
     
+    # Fill Offer column with 'None'
+    df['Offer'] = df['Offer'].fillna('None')
+    
     # Save processed data
     df.to_csv(config['processed_data_config']['cleaned_data_csv'], index=False)
     

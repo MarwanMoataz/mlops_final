@@ -2,6 +2,41 @@
 
 This project implements an end-to-end MLOps pipeline for predicting customer churn using machine learning. The system includes data processing, model training, evaluation, and a web interface for making predictions.
 
+## Dataset
+
+**Source:** [Telco Customer Churn (IBM Dataset) on Kaggle](https://www.kaggle.com/datasets/yeanzc/telco-customer-churn-ibm-dataset)
+
+**Context:**
+A fictional telco company that provided home phone and Internet services to 7,043 customers in California in Q3.
+
+**Data Description:**
+- 7,043 observations with 33 variables
+
+**Key Columns:**
+- **CustomerID:** A unique ID that identifies each customer.
+- **Count:** A value used in reporting/dashboarding to sum up the number of customers in a filtered set.
+- **Country, State, City, Zip Code, Lat Long, Latitude, Longitude:** Customer's primary residence information.
+- **Gender:** The customer's gender: Male, Female
+- **Senior Citizen:** Indicates if the customer is 65 or older: Yes, No
+- **Partner:** Indicate if the customer has a partner: Yes, No
+- **Dependents:** Indicates if the customer lives with any dependents: Yes, No
+- **Tenure Months:** Total months the customer has been with the company.
+- **Phone Service:** Subscribes to home phone service: Yes, No
+- **Multiple Lines:** Subscribes to multiple telephone lines: Yes, No
+- **Internet Service:** Subscribes to Internet service: No, DSL, Fiber Optic, Cable.
+- **Online Security, Online Backup, Device Protection, Tech Support:** Subscribes to additional services: Yes, No
+- **Streaming TV, Streaming Movies:** Uses Internet service to stream TV/movies: Yes, No
+- **Contract:** Current contract type: Month-to-Month, One Year, Two Year.
+- **Paperless Billing:** Chosen paperless billing: Yes, No
+- **Payment Method:** How the customer pays their bill: Bank Withdrawal, Credit Card, Mailed Check
+- **Monthly Charge:** Current total monthly charge for all services.
+- **Total Charges:** Total charges to the end of the quarter.
+- **Churn Label:** Yes = the customer left this quarter. No = remained.
+- **Churn Value:** 1 = left, 0 = remained.
+- **Churn Score:** 0-100, higher means more likely to churn.
+- **CLTV:** Customer Lifetime Value, higher means more valuable.
+- **Churn Reason:** Specific reason for leaving, related to Churn Category.
+
 ## Project Structure
 
 ```
